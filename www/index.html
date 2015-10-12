@@ -14,35 +14,76 @@
     <script src="js/velocity.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/app.js"></script>
-	
       
-     <script>
-    /* Wait until device is ready to re-assign Back button */
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        document.addEventListener("backbutton", onBackKeyPress, false);
+      
+      
+<script type="text/javascript" charset="utf-8">
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `deviceready`.
+    // 
+    function onLoad() {
+        console.log("I've been loaded");
+        document.addEventListener("deviceready", onDeviceReady, false);
     }
-    function onBackKeyPress() {
-        /* If the current page is the login page, disable the button completely (aka do nothing) */
-        if ($.mobile.activePage.attr('id') == 'login_page') {
-        }
-
-        /* Else, execute log off code */
-        else {
-            if (confirm("Are you sure you want to logout?")) {
-                /* Here is where my AJAX code for logging off goes */
-            }
-            else {
-                return false;
-            }
-        }
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        console.log("Device Ready");
+    }
+        
+    /**
+     * Global Variables
+     */
+    var cur = null;
+        
+    // Back key event handler
+    //
+    function onBackKey() {
+        console.log("I've caught a back key");
+			
+        // We are going back to home so remove the event listener 
+        // so the default back key behaviour will take over
+        document.removeEventListener("backbutton", onBackKey, false);
+			
+	// Hide the current dive and show home
+        document.getElementById(cur).style.display = 'none';
+        document.getElementById('home').style.display = 'block';
+	cur = 'home';
+    }
+    function goToDiv(id) {
+        // We are moving to a new div so over ride the back button 
+	// so when a users presses back it will show the home div
+        document.addEventListener("backbutton", onBackKey, false);
+			
+	// Hide home and show the new div
+        document.getElementById('home').style.display = 'none';
+        document.getElementById(id).style.display = 'block';
+	cur = id;
     }
     </script>
-      
-      
-  </head>
-<body>
 
+  </head>
+<body onload="onLoad()">
+    <div id="home">
+          Back Button Home<br/>
+          <a href="javascript:goToDiv('div1')">Div One</a><br/>
+          <a href="javascript:goToDiv('div2')">Div Two</a>
+      </div>
+      <div id="div1" style="display: none">
+          Div One
+      </div>
+      <div id="div2" style="display: none">
+          Div Two
+      </div>
+    
+    
+    
+    
+    
+<!--
 <div class="header">
     <div class="container">
         <div class="pull-right app_name" > 
@@ -68,28 +109,28 @@
 <div class="cd-overlay-nav"><span></span></div>
 <div class="cd-overlay-content"><span></span></div>
 
+<div id="wrap" style="padding:20px 0;margin-top:50px;">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="row">
 
-	<div id="wrap" style="padding:20px 0;margin-top:50px;">
-		<div class="container" >
-			<div class="row">
-				<div class="col-md-12" >
-                    <div class="row">
-						
-						<div class="loading" align="center" style="display:none;">
-                            <img src="img/loader.gif"/><br><br>جاري الإتصال بسرفر...
-                        </div>
-                        
-                        <div class="no_network" align="center" style="display:none;">
-                            <img src="img/warning.png" style="height:50px;"/><br><br>لا يوجد اتصال بالانترنت !
-                        </div>
-                        
-						<div class="data"></div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="loading" align="center" style="display:none;">
+                        <img src="img/loader.gif"/><br><br>جاري الإتصال بسرفر...
+                    </div>
+
+                    <div class="no_network" align="center" style="display:none;">
+                        <img src="img/warning.png" style="height:50px;"/><br><br>لا يوجد اتصال بالانترنت !
+                    </div>
+
+                    <div class="data"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener("backbutton", onBackKeyDown, false);
 
@@ -97,5 +138,8 @@ function onBackKeyDown() {
     return false;
 }    
 </script>
+-->  
+    
+    
 </body>
 </html>
