@@ -1,39 +1,83 @@
 <!DOCTYPE html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>PG Back/Menu/Search Test</title>
-    <meta name="viewport" content="width=device-width">
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/fastclick.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/zepto-1.1.6.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript">
-    // Wait for PhoneGap to load
-    document.addEventListener("deviceready", onDeviceReady, false);
-    // Get rid of 300ms delay 
-    document.addEventListener('DOMContentLoaded', function() { FastClick.attach(document.body); }, false);
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/menu.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-    function onDeviceReady() {
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+        <script src="js/jquery.js"></script>
+        <script src="js/velocity.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
 
-            document.addEventListener("backbutton", onBackButton, false);
-            document.addEventListener("menubutton", onMenuButton, false);
+        <script type="text/javascript">
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyDown, false);
+        }
+        function onBackKeyDown() {
+            alert('Back button clicked!');
+        }
+        </script>
+      
+      
+  </head>
+<body>
 
-    }
-    function onBackButton() {
-        alert("backbutton.");
-    }
-    function onMenuButton() {
-        alert("menubutton.");
-    }
-    </script>
-</head>
-<body >
+<div class="header">
+    <div class="container">
+        <div class="pull-right app_name" > 
+           تطبيق دورات
+        </div>
+        <div class="pull-left" > 
+            <a href="#" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+        </div>
+    </div>
+</div>
 
+<nav>
+    <ul class="cd-primary-nav">
+		<div align="center" style="background:#fff;margin:-26px 0 0 0;padding:0 0 50px 0;"><img src="img/logo.jpg"/></div>
+        <li><a href="#" class="js_header_courses">الدورات</a></li>
+        <li><a href="#" class="js_header_organizers">المنظمون</a></li>
+        <li><a href="#" class="js_header_trainers">المدربون</a></li>
+        <li><a href="#" class="js_header_training_rooms">القاعات التدريبية</a></li>
+        <li><a href="#" class="js_header_register">تسجيل عضوية</a></li>
+        <li><a href="#" class="js_header_contact_us">إتصل بنا</a></li>
+    </ul>
+</nav>
+<div class="cd-overlay-nav"><span></span></div>
+<div class="cd-overlay-content"><span></span></div>
+
+
+<div id="wrap" style="padding:20px 0;margin-top:50px;">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="row">
+
+                    <div class="loading" align="center" style="display:none;">
+                        <img src="img/loader.gif"/><br><br>جاري الإتصال بسرفر...
+                    </div>
+
+                    <div class="no_network" align="center" style="display:none;">
+                        <img src="img/warning.png" style="height:50px;"/><br><br>لا يوجد اتصال بالانترنت !
+                    </div>
+
+                    <div class="data"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
 
 </body>
-<script type="text/javascript">
-    var persistentStorage = window.localStorage;
-    var sessionStorage = window.sessionStorage;
-</script>
 </html>
