@@ -15,6 +15,31 @@
     <script src="js/main.js"></script>
     <script src="js/app.js"></script>
 	
+      
+     <script>
+    /* Wait until device is ready to re-assign Back button */
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyPress, false);
+    }
+    function onBackKeyPress() {
+        /* If the current page is the login page, disable the button completely (aka do nothing) */
+        if ($.mobile.activePage.attr('id') == 'login_page') {
+        }
+
+        /* Else, execute log off code */
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    </script>
+      
+      
   </head>
 <body>
 
