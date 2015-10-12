@@ -67,11 +67,13 @@
 </div>
     
 <script type="text/javascript">
-document.addEventListener("backbutton", onBackKeyDown, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 
-function onBackKeyDown() {
-    alert('backbutton');
-}    
+function onDeviceReady(){
+    document.addEventListener("backbutton", function(e){
+       alert("backbutton");
+    }, false);
+}  
 </script>
 </body>
 </html>
