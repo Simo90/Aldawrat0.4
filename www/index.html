@@ -16,38 +16,10 @@
         <script src="js/main.js"></script>
         <script src="js/app.js"></script>
 
-        <script type="text/javascript">
-function onLoad() { 
-    document.addEventListener("deviceready", onDeviceReady, false); 
-} 
-
-// device APIs are available  
-function onDeviceReady() { 
-    // Register the event listener 
-    document.addEventListener("backbutton", onBackKeyDown, false); 
-} 
-
-// Handle the back button
-function onBackKeyDown() {
-    navigator.notification.prompt( 
-    'Please enter your Password', // message 
-    onPrompt, // callback to invoke 
-    'Registration', // title 
-    ['Ok','Exit'], // buttonLabels 
-    '' // defaultText 
-    ); 
-} 
-
-function onPrompt(results) {
-    if((results.buttonIndex == 1)&&(results.input1 == storedpswd)){ //Validate against stored password 
-        navigator.app.exitApp(); 
-    } 
-} 
-        </script>
       
       
   </head>
-<body  onload="onLoad()">
+<body>
 
 <div class="header">
     <div class="container">
