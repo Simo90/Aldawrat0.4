@@ -1,42 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Back Button</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script>
-		function getTitle() {
-			document.getElementById("ct").innerHTML = "DEMO: " + document.title;
-		}
-	</script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/menu.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
 
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src="js/velocity.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/app.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
-    // Wait for device API libraries to load
-    //
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-        getTitle();
-    }
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        // Register the event listener
-        document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-    // Handle the back button
-    //
-    function onBackKeyDown() {
-    	alert('Backbutton key pressed');
-    	console.log('Backbutton key pressed');
-    }
-    </script>
+        <script type="text/javascript">
+function onLoad() { 
+    document.addEventListener("deviceready", onDeviceReady, false); 
+} 
+
+// device APIs are available  
+function onDeviceReady() { 
+    // Register the event listener 
+    document.addEventListener("backbutton", onBackKeyDown, false); 
+} 
+
+// Handle the back button
+function onBackKeyDown() {
+    navigator.notification.prompt( 
+    'Please enter your Password', // message 
+    onPrompt, // callback to invoke 
+    'Registration', // title 
+    ['Ok','Exit'], // buttonLabels 
+    '' // defaultText 
+    ); 
+} 
+
+function onPrompt(results) {
+    if((results.buttonIndex == 1)&&(results.input1 == storedpswd)){ //Validate against stored password 
+        navigator.app.exitApp(); 
+    } 
+} 
+        </script>
+      
+      
   </head>
-  <body onload="onLoad()">
-  <ul id="nav">
-		<li><a href="index.html">&larr; Back</a></li>
-		<li><a href="#" id="ct" onclick="location.reload();"></a></li>
-	</ul>
-  </body>
+<body  onload="onLoad()">
+
+<div class="header">
+    <div class="container">
+        <div class="pull-right app_name" > 
+           تطبيق دورات
+        </div>
+        <div class="pull-left" > 
+            <a href="#" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <ul class="cd-primary-nav">
+		<div align="center" style="background:#fff;margin:-26px 0 0 0;padding:0 0 50px 0;"><img src="img/logo.jpg"/></div>
+        <li><a href="#" class="js_header_courses">الدورات</a></li>
+        <li><a href="#" class="js_header_organizers">المنظمون</a></li>
+        <li><a href="#" class="js_header_trainers">المدربون</a></li>
+        <li><a href="#" class="js_header_training_rooms">القاعات التدريبية</a></li>
+        <li><a href="#" class="js_header_register">تسجيل عضوية</a></li>
+        <li><a href="#" class="js_header_contact_us">إتصل بنا</a></li>
+    </ul>
+</nav>
+<div class="cd-overlay-nav"><span></span></div>
+<div class="cd-overlay-content"><span></span></div>
+
+
+<div id="wrap" style="padding:20px 0;margin-top:50px;">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="row">
+
+                    <div class="loading" align="center" style="display:none;">
+                        <img src="img/loader.gif"/><br><br>جاري الإتصال بسرفر...
+                    </div>
+
+                    <div class="no_network" align="center" style="display:none;">
+                        <img src="img/warning.png" style="height:50px;"/><br><br>لا يوجد اتصال بالانترنت !
+                    </div>
+
+                    <div class="data"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+</body>
 </html>
