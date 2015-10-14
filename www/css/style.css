@@ -279,7 +279,7 @@ h1{
 
 
 .page_menu{
-    position: fixed;bottom:0;display: block;width: 100%;z-index: 5000;
+    position: fixed;bottom:0;display: block;width: 100%;
 }
 .page_menu ul{
     margin:0;padding:0;
