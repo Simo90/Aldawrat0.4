@@ -1,4 +1,4 @@
-var siteurl = 'http://localhost/dawarat/js/';
+var siteurl = 'http://al-dawrat.com/js/';
 var siteurl_app = siteurl+'app/';
 
 
