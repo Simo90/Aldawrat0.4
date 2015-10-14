@@ -207,7 +207,7 @@
 }
 @media only screen and (min-width: 768px) {
   .cd-primary-nav li {
-    margin: 2em 0;
+    margin: 0;
   }
   .cd-primary-nav a {
     font-size: 28px;
@@ -216,7 +216,7 @@
 }
 @media only screen and (min-width: 1170px) {
   .cd-primary-nav li {
-    margin: 2.6em 0;
+    margin: 0;
   }
   .cd-primary-nav a {
     font-size: 32px;

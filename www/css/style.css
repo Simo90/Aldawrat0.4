@@ -279,7 +279,7 @@ h1{
 
 
 .page_menu{
-    position: fixed;bottom:0;display: block;width: 100%;
+    position: fixed;bottom:0;display: block;width: 100%;z-index: 5000;
 }
 .page_menu ul{
     margin:0;padding:0;
@@ -404,11 +404,6 @@ h1{
 .no_results{
     font-family: GEDinarOne;font-size:20px;
 }
-
-
-
-
-
 
 
 

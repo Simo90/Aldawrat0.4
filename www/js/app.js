@@ -1,11 +1,21 @@
-$(document).ready(function(){
-	
-    
-    var siteurl = 'http://al-dawrat.com/js/';
-    var siteurl_app = siteurl+'app/';
-    
-    $(".js_header_courses").click(function() {
+var siteurl = 'http://localhost/dawarat/js/';
+var siteurl_app = siteurl+'app/';
 
+
+
+function exp_url(){
+
+    var url = window.location.href;
+    var res = url.split("#");
+    var url_data = res[1];
+    
+    var exp = url_data.split("/");
+    
+    $('body').css({ 'background':'#DCE9F5' });
+    $('.close-nav').css({ 'visibility':'invisible' });
+    
+    if ( exp[0]=='courses' ){
+        
         $('.loading').show();
         $('.data').hide();
         $('.no_network').hide();
@@ -25,11 +35,10 @@ $(document).ready(function(){
                 $('.data').html(data).fadeIn(200);
             }
         })
-        return false;
-    });
-    $("body").on("click",".js_course", function(){
+    }
+    else if ( exp[0]=='course' ){
         
-        var id = $(this).attr('id');
+        var id = exp[1];
         
         if ( $(this).attr('header_title')!='' ){
             $('.app_name').html($(this).attr('header_title'));
@@ -56,9 +65,229 @@ $(document).ready(function(){
                 $('.data').html(data).fadeIn(200);
             }
         })
+    }
+    else if ( exp[0]=='organizers' ){
         
+        $('.loading').show();
+        $('.data').hide();
+        $('.no_network').hide();
+        
+        $.ajax({
+            method: "POST",
+            url: siteurl_app+'organizers',
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='organizer' ){
+        
+        var id = exp[1];
+        
+        if ( $(this).attr('header_title')!='' ){
+            $('.app_name').html($(this).attr('header_title'));
+        }
+        
+        $('.data').hide();
+        $('.loading').show();
+        $('.no_network').hide();
+        
+        $.ajax({
+            url: siteurl_app+'organizer',
+            method: "POST",
+            data: { id : id },
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='trainers' ){
+        
+        $('.loading').show();
+        $('.data').hide();
+        $('.no_network').hide();
+        
+        $.ajax({
+            method: "POST",
+            url: siteurl_app+'trainers',
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='trainer' ){
+        
+        var id = exp[1];
+        
+        if ( $(this).attr('header_title')!='' ){
+            $('.app_name').html($(this).attr('header_title'));
+        }
+        
+        $('.data').hide();
+        $('.loading').show();
+        $('.no_network').hide();
+        
+        $.ajax({
+            url: siteurl_app+'trainer',
+            method: "POST",
+            data: { id : id },
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='training_rooms' ){
+        
+        $('.loading').show();
+        $('.data').hide();
+        $('.no_network').hide();
+        
+        $.ajax({
+            method: "POST",
+            url: siteurl_app+'training_rooms',
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='training_room' ){
+        
+        var id = exp[1];
+        
+        if ( $(this).attr('header_title')!='' ){
+            $('.app_name').html($(this).attr('header_title'));
+        }
+        
+        $('.data').hide();
+        $('.loading').show();
+        $('.no_network').hide();
+        
+        $.ajax({
+            url: siteurl_app+'training_room',
+            method: "POST",
+            data: { id : id },
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='contact_us' ){
+        
+        $('.data').hide();
+        $('.loading').show();
+        $('.no_network').hide();
+        
+        $.ajax({
+            method: "POST",
+            url: siteurl_app+'contact_us',
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+    else if ( exp[0]=='register' ){
+        
+        $('.data').hide();
+        $('.loading').show();
+        $('.no_network').hide();
+        
+        $.ajax({
+            method: "POST",
+            url: siteurl_app+'register',
+            timeout: 10000,
+            error: function(jqXHR) { 
+                if(jqXHR.status==0) {
+                    $('.loading').hide();
+                    $('.no_network').show();
+                }
+            },
+            success: function(data) {
+                $('.loading').hide();
+                $('.data').html(data).fadeIn(200);
+            }
+        })
+    }
+}
+
+
+window.onhashchange = function() {       
+    
+    exp_url();
+}
+
+
+$(document).ready(function(){
+	
+    
+    $("body").on("click",".a_sys", function(){
+        
+        if ( $(this).attr('header_title')!='' ){
+            $('.app_name').html($(this).attr('header_title'));
+        }
+        
+        var url = $(this).attr('href');
+        window.history.pushState('object', 'New Title', url );
+        
+        exp_url();
         return false;
-    });
+    })
+    
     $("body").on("click",".js_course_sub", function(){
 		
         var btn = $(this);
@@ -178,59 +407,6 @@ $(document).ready(function(){
         return false;
     })
     
-    $(".js_header_organizers").click(function() {
-
-        $('.loading').show();
-        $('.data').hide();
-        $('.no_network').hide();
-        
-        $.ajax({
-            method: "POST",
-            url: siteurl_app+'organizers',
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
-    $("body").on("click",".js_organizer", function(){
-        
-        var id = $(this).attr('id');
-        
-        if ( $(this).attr('header_title')!='' ){
-            $('.app_name').html($(this).attr('header_title'));
-        }
-        
-        $('.data').hide();
-        $('.loading').show();
-        $('.no_network').hide();
-        
-        $.ajax({
-            url: siteurl_app+'organizer',
-            method: "POST",
-            data: { id : id },
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
     $("body").on("click",".js_organizers_search", function(){
         
         var d = $(this).attr('d');
@@ -290,60 +466,6 @@ $(document).ready(function(){
         return false;
     })
     
-    
-    $(".js_header_trainers").click(function() {
-
-        $('.loading').show();
-        $('.data').hide();
-        $('.no_network').hide();
-        
-        $.ajax({
-            method: "POST",
-            url: siteurl_app+'trainers',
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
-    $("body").on("click",".js_trainer", function(){
-        
-        var id = $(this).attr('id');
-        
-        if ( $(this).attr('header_title')!='' ){
-            $('.app_name').html($(this).attr('header_title'));
-        }
-        
-        $('.data').hide();
-        $('.loading').show();
-        $('.no_network').hide();
-        
-        $.ajax({
-            url: siteurl_app+'trainer',
-            method: "POST",
-            data: { id : id },
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
     $("body").on("click",".js_trainers_search", function(){
         
         var d = $(this).attr('d');
@@ -402,59 +524,6 @@ $(document).ready(function(){
         return false;
     })
         
-    $(".js_header_training_rooms").click(function() {
-
-        $('.loading').show();
-        $('.data').hide();
-        $('.no_network').hide();
-        
-        $.ajax({
-            method: "POST",
-            url: siteurl_app+'training_rooms',
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
-    $("body").on("click",".js_training_room", function(){
-        
-        var id = $(this).attr('id');
-        
-        if ( $(this).attr('header_title')!='' ){
-            $('.app_name').html($(this).attr('header_title'));
-        }
-        
-        $('.data').hide();
-        $('.loading').show();
-        $('.no_network').hide();
-        
-        $.ajax({
-            url: siteurl_app+'training_room',
-            method: "POST",
-            data: { id : id },
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
     $("body").on("click",".js_training_rooms_search", function(){
         
         var d = $(this).attr('d');
@@ -564,53 +633,6 @@ $(document).ready(function(){
         })
 	});
     
-    $(".js_header_contact_us").click(function() {
-        
-        $('.data').hide();
-        $('.loading').show();
-        $('.no_network').hide();
-        
-        $.ajax({
-            method: "POST",
-            url: siteurl_app+'contact_us',
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
-    
-	$(".js_header_register").click(function() {
-        
-        $('.data').hide();
-        $('.loading').show();
-        $('.no_network').hide();
-        
-        $.ajax({
-            method: "POST",
-            url: siteurl_app+'register',
-            timeout: 10000,
-            error: function(jqXHR) { 
-                if(jqXHR.status==0) {
-                    $('.loading').hide();
-                    $('.no_network').show();
-                }
-            },
-            success: function(data) {
-                $('.loading').hide();
-                $('.data').html(data).fadeIn(200);
-            }
-        })
-        return false;
-    });
 	$("body").on("change",".js_membership", function(){
 		if ( $(this).val()==1 ){
 			$('.js_conditions').show();
@@ -672,14 +694,6 @@ $(document).ready(function(){
 	})
 	
 });
-
-
-
-
-
-
-
-
 
 
 
