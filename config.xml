@@ -33,9 +33,26 @@
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm"/>
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
 
-    <icon src="www/icon.png"/>
-    <gap:splash src="www/splash.png" />
-    
+    <platform name="android">
+        <icon src="www/icon.png" density="ldpi" />
+        <icon src="www/icon.png" density="mdpi" />
+        <icon src="www/icon.png" density="hdpi" />
+        <icon src="www/icon.png" density="xhdpi" />
+        <icon src="www/icon.png" density="xxhdpi" />
+        <icon src="www/icon.png" density="xxxhdpi" />
+        <splash src="www/splash.png" density="land-hdpi"/>
+        <splash src="www/splash.png" density="land-ldpi"/>
+        <splash src="www/splash.png" density="land-mdpi"/>
+        <splash src="www/splash.png" density="land-xhdpi"/>
+        <splash src="www/splash.png" density="land-xhdpi"/>
+        <splash src="www/splash.png" density="land-xhdpi"/>
+        <splash src="www/splash.png" density="port-hdpi"/>
+        <splash src="www/splash.png" density="port-ldpi"/>
+        <splash src="www/splash.png" density="port-mdpi"/>
+        <splash src="www/splash.png" density="port-xhdpi"/>
+        <splash src="www/splash.png" density="port-xxhdpi"/>
+        <splash src="www/splash.png" density="port-xxxhdpi"/>
+    </platform>
     
     <access origin="*"/>
     <plugin name="cordova-plugin-whitelist" version="1"/>
