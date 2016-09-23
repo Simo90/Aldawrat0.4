@@ -1,4 +1,4 @@
-var siteurl = 'http://al-dawrat.com/js/';
+var siteurl = 'http://nw2day.com/site/dawratapp/js/';
 var siteurl_app = siteurl+'app/';
 
 
