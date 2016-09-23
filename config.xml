@@ -40,18 +40,12 @@
         <icon src="www/icon.png" density="xhdpi" />
         <icon src="www/icon.png" density="xxhdpi" />
         <icon src="www/icon.png" density="xxxhdpi" />
-        <splash src="www/splash.png" density="land-hdpi"/>
-        <splash src="www/splash.png" density="land-ldpi"/>
-        <splash src="www/splash.png" density="land-mdpi"/>
-        <splash src="www/splash.png" density="land-xhdpi"/>
-        <splash src="www/splash.png" density="land-xhdpi"/>
-        <splash src="www/splash.png" density="land-xhdpi"/>
-        <splash src="www/splash.png" density="port-hdpi"/>
-        <splash src="www/splash.png" density="port-ldpi"/>
-        <splash src="www/splash.png" density="port-mdpi"/>
-        <splash src="www/splash.png" density="port-xhdpi"/>
-        <splash src="www/splash.png" density="port-xxhdpi"/>
-        <splash src="www/splash.png" density="port-xxxhdpi"/>
+        <splash src="www/splash.png" density="ldpi"/>
+        <splash src="www/splash.png" density="mdpi"/>
+        <splash src="www/splash.png" density="hdpi"/>
+        <splash src="www/splash.png" density="xhdpi"/>
+        <splash src="www/splash.png" density="xxhdpi"/>
+        <splash src="www/splash.png" density="fr-xxhdpi"/>
     </platform>
     
     <access origin="*"/>
